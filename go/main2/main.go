@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gocolly/colly"
 	"io/ioutil"
 	"log"
 	"strings"
+
+	"github.com/gocolly/colly"
 )
 
 type Headline struct {
