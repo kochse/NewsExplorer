@@ -2,12 +2,18 @@
     <head>
         <style>
             body {  }
-            ul { color: blue; }
+            h1 {
+                text-align: center;
+            }
+            ul { 
+                padding: 0 50px;
+                color: rgb(34, 34, 34); 
+            }
             li { 
                 padding: 10px;
                 margin-bottom: 10px;
-                border: 1px solid #ccc;
-                text-decoration: none;
+                border: 1px solid rgb(135, 138, 140);
+                list-style: none;
             }
             a { 
                 
@@ -16,10 +22,10 @@
     </head>
 
     <body>
-        {{source}}
+        <h1>{{source}}</h1>
         <ul>
             {{#each items}}
-                <li><a href="{{ Href }}">{{ Description }}</a></li>
+                <a href="{{ Href }}"><li>{{ Description }}</li></a>
             {{/each}}
         </ul>    
     </body>
