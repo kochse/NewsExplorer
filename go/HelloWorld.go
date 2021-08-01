@@ -45,12 +45,15 @@ func HelloWorld(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 
-	for _, ctx := range allHeadlines {
-		// render template
-		result, err := t.Exec(ctx)
-		if err != nil {
-			panic(err)
-		}
-		fmt.Fprintf(w, result)
+	ctx := map[string]interface{}{
+		"source": "ORF News",
+		"items":  allHeadlines,
 	}
+
+	result, err := t.Exec(ctx)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Fprintf(w, result)
+
 }
