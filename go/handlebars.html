@@ -1,0 +1,45 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div id="list">
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+        <script id="entry-template" type="text/x-handlebars-template">
+            <div class="entry">
+              <h1>{{title}}</h1>
+              <div class="body">
+                {{body}}
+              </div>
+            </div>
+
+            {{#each persons}}
+                {{>person person=.}}
+            {{/each}}
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                Handlebars.registerPartial("person", "{{person.name}} is {{person.age}} years old.\n")
+
+                // compile our template
+                var template = Handlebars.compile($("#entry-template").html());
+                var ctx = { 
+                    title: "My New Post", 
+                    body: "This is my first post!",
+                    persons: [
+                        { name: "Nils", age: 20 },
+                        { name: "Teddy", age: 10 },
+                        { name: "Nelson", age: 40 },
+                    ],
+                };
+                
+                $('#list').html(template(ctx));
+            });
+        </script>
+    </body>
+</html>
