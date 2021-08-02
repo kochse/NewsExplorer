@@ -3,7 +3,7 @@
         
     </head>
     <body>
-        <div id="list">
+        <div id="content">
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -17,28 +17,36 @@
               </div>
             </div>
 
-            {{#each persons}}
-                {{>person person=.}}
+            {{#each people}}
+                {{> person}}
             {{/each}}
+        </script>
+
+        <script id="person-partial" type="text/x-handlebars-template">
+            <div class="person">
+              <h2>{{name}}</h2>
+              <div class="age">{{age}}</div>
+            </div>
         </script>
 
         <script type="text/javascript">
             $(document).ready(function() {
-                Handlebars.registerPartial("person", "{{person.name}} is {{person.age}} years old.\n")
-
                 // compile our template
                 var template = Handlebars.compile($("#entry-template").html());
+
+                Handlebars.registerPartial("person", $("#person-partial").html())
+
                 var ctx = { 
                     title: "My New Post", 
                     body: "This is my first post!",
-                    persons: [
+                    people: [
                         { name: "Nils", age: 20 },
                         { name: "Teddy", age: 10 },
                         { name: "Nelson", age: 40 },
                     ],
                 };
                 
-                $('#list').html(template(ctx));
+                $('#content').html(template(ctx));
             });
         </script>
     </body>
