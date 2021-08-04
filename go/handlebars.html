@@ -21,6 +21,22 @@
                 display: flex;
                 flex-direction: row;
             }
+
+            footer {
+                margin-top: 500px;
+            }
+
+            .b-lazy.animate{
+                opacity:0;
+                -ms-transform: scale(3);
+                -moz-transform: scale(3);
+                -webkit-transform: scale(3);
+                transform: scale(3);
+                -ms-transition: all 500ms;
+                -moz-transition: all 500ms;
+                -webkit-transition: all 500ms;
+                transition: all 500ms;
+            }
         </style>
     </head>
     <body>
@@ -30,7 +46,9 @@
         <div id="content">
         </div>
         <footer data-scroll-index="99">
-            <div class="container"></div>
+            <div class="container">
+				<img class="b-lazy" src="placeholder.png" data-src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Wikidata_Map_April_2016_Huge.png" alt="Image" />
+			</div>
         </footer>
 
         <script id="template" type="text/x-handlebars-template">
@@ -105,6 +123,11 @@
                 
                 $('#content').html(template(ctx));
             });
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+        <script>
+            var bLazy = new Blazy({});
         </script>
     </body>
 </html>
