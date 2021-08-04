@@ -37,11 +37,13 @@
         </header>
         <div id="content" class="lazy">
         </div>
+       
         <div id="additional-content" class="lazy">
         </div>
         <footer data-scroll-index="99">
         </footer>
         
+        <h3>Lazy Load Image</h3>
         <div class="container">
 			<img class="lazy" src="placeholder.png" data-src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Wikidata_Map_April_2016_Huge.png" alt="Image" />
 		</div>
@@ -67,6 +69,7 @@
         </script>
 
         <script id="additional-content-template" type="text/x-handlebars-template">
+            <h3>External JSON Template</h3>
             {{#each items}}
                 <div>{{text}}</div>
             {{/each}}
