@@ -1,16 +1,16 @@
 {
     "items": [
         {
-            "text": "Content Item 1"
+            "text": "Additional Content Item 1 from JSON"
         },
         {
-            "text": "Content Item 2"
+            "text": "Additional Content Item 2 from JSON"
         },
         {
-            "text": "Content Item 3"
+            "text": "Additional Content Item 3 from JSON"
         },
         {
-            "text": "Content Item 4"
+            "text": "Additional Content Item 4 from JSON"
         }
     ]
 }

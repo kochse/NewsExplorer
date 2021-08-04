@@ -35,16 +35,17 @@
         <header>
             <div id="intro" data-scroll-index="0"></div>
         </header>
-        <div id="content">
+        <div id="content" class="lazy">
+        </div>
+        <div id="additional-content" class="lazy">
         </div>
         <footer data-scroll-index="99">
-            <div class="container">
-				<img class="b-lazy" src="placeholder.png" data-src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Wikidata_Map_April_2016_Huge.png" alt="Image" />
-			</div>
         </footer>
-        <div id="additional-content">
-            
-        </div>
+        
+        <div class="container">
+			<img class="lazy" src="placeholder.png" data-src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Wikidata_Map_April_2016_Huge.png" alt="Image" />
+		</div>
+
 
         <script id="template" type="text/x-handlebars-template">
             <h1>{{ title }}</h1>
@@ -81,6 +82,7 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.11/jquery.lazy.min.js"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -125,22 +127,22 @@
                 $('#content').html(template(ctx));
             });
         </script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
-        <script>
-            var bLazy = new Blazy({});
-
-            // Load additional content
-            $.getJSON("additional-content.json", function(data) {
-                var templateScript = $("#additional-content-template").html();
-                var template = Handlebars.compile(templateScript);
-
-                $("#additional-content").append(template(data));
-            });
-        </script>
-
         <script type="text/javascript">
-            console.log('delay script');
+            $(function() {
+                $('.lazy').lazy({
+                    onFinishedAll: function() {
+                        
+                    }
+                });
+
+                // Load additional content
+                $.getJSON("additional-content.json", function(data) {
+                        var templateScript = $("#additional-content-template").html();
+                        var template = Handlebars.compile(templateScript);
+
+                        $("#additional-content").append(template(data));
+                    });
+            });
         </script>
     </body>
 </html>
