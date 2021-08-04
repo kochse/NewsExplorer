@@ -1,6 +1,9 @@
 <html>
     <head>
         <style>
+            #additional-content {
+                height: 200px;
+            }
             .box {
                 display: flex;
                 align-items: center;
@@ -26,17 +29,6 @@
                 margin-top: 500px;
             }
 
-            .b-lazy.animate{
-                opacity:0;
-                -ms-transform: scale(3);
-                -moz-transform: scale(3);
-                -webkit-transform: scale(3);
-                transform: scale(3);
-                -ms-transition: all 500ms;
-                -moz-transition: all 500ms;
-                -webkit-transition: all 500ms;
-                transition: all 500ms;
-            }
         </style>
     </head>
     <body>
@@ -45,13 +37,14 @@
         </header>
         <div id="content">
         </div>
-        <div id="additional-content">
-        </div>
         <footer data-scroll-index="99">
             <div class="container">
 				<img class="b-lazy" src="placeholder.png" data-src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Wikidata_Map_April_2016_Huge.png" alt="Image" />
 			</div>
         </footer>
+        <div id="additional-content">
+            
+        </div>
 
         <script id="template" type="text/x-handlebars-template">
             <h1>{{ title }}</h1>
@@ -144,6 +137,10 @@
 
                 $("#additional-content").append(template(data));
             });
+        </script>
+
+        <script type="text/javascript">
+            console.log('delay script');
         </script>
     </body>
 </html>
