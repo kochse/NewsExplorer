@@ -45,6 +45,8 @@
         </header>
         <div id="content">
         </div>
+        <div id="additional-content">
+        </div>
         <footer data-scroll-index="99">
             <div class="container">
 				<img class="b-lazy" src="placeholder.png" data-src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Wikidata_Map_April_2016_Huge.png" alt="Image" />
@@ -67,6 +69,12 @@
                         </div>
                     </div>
                 </section>
+            {{/each}}
+        </script>
+
+        <script id="additional-content-template" type="text/x-handlebars-template">
+            {{#each items}}
+                <div>{{text}}</div>
             {{/each}}
         </script>
 
@@ -128,6 +136,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
         <script>
             var bLazy = new Blazy({});
+
+            // Load additional content
+            $.getJSON("additional-content.json", function(data) {
+                var templateScript = $("#additional-content-template").html();
+                var template = Handlebars.compile(templateScript);
+
+                $("#additional-content").append(template(data));
+            });
         </script>
     </body>
 </html>
