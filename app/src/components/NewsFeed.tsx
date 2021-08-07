@@ -9,23 +9,24 @@ const Title = styled.h3`
 `;
 
 const NewsFeed = (props: {title: String}) => {
-    const [data, setData] = useState({ news: [] })
+    const [data, setData] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
                 'https://europe-west1-scraper1-321417.cloudfunctions.net/HelloWorld'
             )
-    
+                
             setData(result.data);
-        }
+        };
+
         fetchData();
-    });
+    }, []);
 
     return (
         <div>
             <Title>{props.title}</Title>
-            <NewsFeedList news={data.news}></NewsFeedList>
+            <NewsFeedList news={data}></NewsFeedList>
         </div>
     );
 }

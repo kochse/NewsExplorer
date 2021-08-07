@@ -1,6 +1,6 @@
 interface News {
-    title: string;
-    href: string;
+    Description: string;
+    Href: string;
 }
 
 interface State {

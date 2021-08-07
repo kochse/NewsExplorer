@@ -24,14 +24,21 @@ const Link = styled.a`
 `;
 
 const NewsFeedList = (props: { news: News[] }) => {
-    const listItems = props.news.map((item: News) =>
-        <Item>
-            <Link href={item.href}>{item.title}</Link>
-        </Item>
-    );
+
+    if (props.news) {
+        const listItems = props.news.map((item: News, index) =>
+            <Item key={index}>
+                <Link href={item.Href}>{item.Description}</Link>
+            </Item>
+        );
+
+        return (
+            <List>{listItems}</List>
+        );
+    }
 
     return (
-        <List>{listItems}</List>
+        <div>no data</div>
     );
 }
 
